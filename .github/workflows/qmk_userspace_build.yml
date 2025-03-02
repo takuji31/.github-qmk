@@ -18,6 +18,11 @@ on:
         default: ""
         required: false
         type: string
+      artifact_name:
+        description: "Artifact name"
+        default: "Firmware"
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -86,7 +91,7 @@ jobs:
         if: always() && !cancelled()
         continue-on-error: true
         with:
-          name: Firmware
+          name: ${{ inputs.artifact_name }}
           path: |
             *.bin
             *.hex
